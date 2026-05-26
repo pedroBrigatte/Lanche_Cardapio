@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreetBurger – Sabor de Verdade</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,Helvetica,sans-serif;background:#120f0d;color:#f5efe6;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;}
+  nav{position:fixed;top:0;left:0;right:0;background:rgba(14,12,11,0.95);display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(245,197,24,0.2);z-index:10;}
+  .brand{font-weight:bold;font-size:1.3rem;}
+  .brand span{color:#e8210a;}
+  .menu{display:flex;gap:1.2rem;}
+  .menu a{font-size:0.95rem;text-transform:uppercase;color:#ddd;}
+  .menu a:hover{color:#f5c518;}
+  .mobile-toggle{display:none;border:none;background:none;color:#f5efe6;font-size:1.4rem;cursor:pointer;}
+  .hero{padding:6rem 1.5rem 3rem;margin-top:4rem;text-align:center;background:#15110f;}
+  .hero h1{font-size:2.8rem;line-height:1.1;margin-bottom:1rem;}
+  .hero p{max-width:38rem;margin:0 auto 1.5rem;color:#b0a79e;}
+  .buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+  .button{display:inline-block;padding:.9rem 1.7rem;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;font-weight:700;}
+  .button.primary{background:#e8210a;color:#fff;}
+  .button.secondary{background:transparent;border:2px solid rgba(245,245,235,0.3);color:#f5efe6;}
+  .section{padding:4rem 1.5rem;}
+  .section h2{font-size:2rem;margin-bottom:.8rem;}
+  .section p{color:#b0a79e;max-width:40rem;margin-bottom:1.5rem;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
+  .card{background:#1f1b18;border:1px solid rgba(255,255,255,0.06);border-radius:8px;overflow:hidden;}
+  .card-top{padding:1.25rem;font-size:2.5rem;text-align:center;background:#181410;}
+  .card-body{padding:1.2rem;}
+  .card-title{font-weight:700;margin-bottom:.5rem;}
+  .card-text{font-size:.95rem;color:#b0a79e;margin-bottom:1rem;}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;}
+  .price{font-weight:bold;color:#f5c518;}
+  .add{width:38px;height:38px;border-radius:50%;border:none;background:#e8210a;color:#fff;cursor:pointer;}
+  .card img{width:100%;height:auto;display:block;object-fit:cover;}
+  .order-form{margin-top:2rem;}
+  .order-form h3{margin-bottom:1rem;font-size:1.1rem;}
+  .order-form form{display:grid;gap:1rem;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  input,textarea{width:100%;padding:.95rem 1rem;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:#15110f;color:#f5efe6;}
+  textarea{min-height:120px;resize:vertical;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .contact-box{background:#1f1b18;padding:1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);}
+  .contact-box strong{display:block;margin-bottom:.5rem;}
+  footer{padding:2rem 1.5rem;color:#9a9087;font-size:.9rem;text-align:center;}
+  .mobile-nav{display:none;position:fixed;inset:0;background:rgba(14,12,11,0.98);flex-direction:column;justify-content:center;align-items:center;gap:1.5rem;}
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{font-size:1.3rem;color:#f5efe6;}
+  .close-nav{position:absolute;top:1rem;right:1rem;border:none;background:none;color:#f5efe6;font-size:1.5rem;cursor:pointer;}
+  @media(max-width:800px){.menu{display:none}.mobile-toggle{display:block}.hero{padding-top:5rem}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.section{padding:3rem 1rem}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand">Street<span>Burger</span></div>
+  <div class="menu">
+    <a href="#menu">Cardápio</a>
+    <a href="#team">Equipe</a>
+    <a href="#contact">Contato</a>
+  </div>
+  <button class="mobile-toggle" id="openMobile">☰</button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-nav" id="closeMobile">✕</button>
+  <a href="#menu">Cardápio</a>
+  <a href="#team">Equipe</a>
+  <a href="#contact">Contato</a>
+</div>
+<section class="hero">
+  <span style="display:inline-block;margin-bottom:1rem;padding:.3rem 1rem;border-radius:999px;background:#f5c518;color:#120f0d;font-size:.8rem;text-transform:uppercase;">Aberto todos os dias • 11h às 23h</span>
+  <h1>O melhor burger da cidade</h1>
+  <p>Ingredientes frescos, pão artesanal e carnes selecionadas. Cada mordida conta uma história de sabor.</p>
+  <div class="buttons">
+    <a class="button primary" href="#menu">Ver Cardápio</a>
+    <a class="button secondary" href="#contact">Fazer Pedido</a>
+  </div>
+</section>
+<section class="section" id="menu">
+  <span style="display:block;margin-bottom:.5rem;color:#f5c518;text-transform:uppercase;font-size:.8rem;">Cardápio</span>
+  <h2>Escolha o seu favorito</h2>
+  <p>Confira opções de burgers, snacks e bebidas em um cardápio direto e gostoso.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-top">🍔</div>
+      <div class="card-body">
+        <div class="card-title">Smash Clássico</div>
+        <div class="card-text">Blend de angus 180g, queijo americano, alface, tomate e molho especial.</div>
+        <div class="card-footer">
+          <span class="price">R$ 32</span>
+          <button class="add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-top">🥩</div>
+      <div class="card-body">
+        <div class="card-title">Double Black</div>
+        <div class="card-text">Dois blends de 150g, cheddar, bacon crocante e cebola caramelizada.</div>
+        <div class="card-footer">
+          <span class="price">R$ 48</span>
+          <button class="add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-top">🍗</div>
+      <div class="card-body">
+        <div class="card-title">Chicken Crispy</div>
+        <div class="card-text">Frango empanado artesanal, coleslaw e molho honey mustard.</div>
+        <div class="card-footer">
+          <span class="price">R$ 34</span>
+          <button class="add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-top">🥤</div>
+      <div class="card-body">
+        <div class="card-title">Shake Oreo</div>
+        <div class="card-text">Milk shake cremoso com sorvete de baunilha, biscoito Oreo e chantilly.</div>
+        <div class="card-footer">
+          <span class="price">R$ 22</span>
+          <button class="add">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="team">
+  <span style="display:block;margin-bottom:.5rem;color:#f5c518;text-transform:uppercase;font-size:.8rem;">Nossa Equipe</span>
+  <h2>Os rostos por trás do sabor</h2>
+  <p>Uma equipe dedicada que prepara cada pedido com atenção e carinho.</p>
+  <div class="cards">
+    <div class="card">      
+      <div class="card-body">
+        <div class="card-title">Pedro Luiz Pereira Brigatte</div>
+        <div class="card-text">Chef e fundador. Mais de 15 anos na cozinha criando receitas únicas.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Kaue Felipe</div>
+        <div class="card-text">Sous-chef especialista em molhos e marinadas saborosas.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Tiago Taroco</div>
+        <div class="card-text">Gerente de operações que garante pedidos prontos no tempo certo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="contact">
+  <span style="display:block;margin-bottom:.5rem;color:#f5c518;text-transform:uppercase;font-size:.8rem;">Contato</span>
+  <h2>Faça seu pedido ou nos visite</h2>
+  <p>Atendemos no balcão, delivery e reservas para grupos. Fale com a gente pelo telefone ou WhatsApp.</p>
+  <div class="contact-grid">
+    <div class="contact-box">
+      <strong>Endereço</strong>
+      Rua das Hamburguerias, 248<br>Centro – São Jose Do Rio Preto, SP
+    </div>
+    <div class="contact-box">
+      <strong>Telefone</strong>
+      (17) 9 9999-0000
+    </div>
+  </div>
+  <div class="order-form">
+    <h3>Preencha seu pedido</h3>
+    <form>
+      <div class="form-row">
+        <input type="text" placeholder="Nome completo">
+        <input type="tel" placeholder="Telefone">
+      </div>
+      <input type="email" placeholder="E-mail">
+      <input type="text" placeholder="Seu pedido">
+      <textarea placeholder="Observações ou pedido especial"></textarea>
+      <button class="button primary" type="submit">Enviar Pedido</button>
+    </form>
+  </div>
+</section>
+<footer>
+  © 2024 StreetBurger. Todos os direitos reservados.
+</footer>
+<script>
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('openMobile').addEventListener('click', () => mobileNav.classList.add('open'));
+  document.getElementById('closeMobile').addEventListener('click', () => mobileNav.classList.remove('open'));
+</script>
+</body>
+</html>
